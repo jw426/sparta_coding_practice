@@ -44,12 +44,22 @@
             padding: 5%;
             border: 1.5px solid black;
             border-radius: 5px;
+
+            display: none;
         }
+
     </style>
 
     <script>
-        function hey() {
-            alert('안녕!!');
+        function open_close() {
+            let status = $('#post-box').css('display');
+            if (status == 'block') {
+                $('#post-box').hide();
+                $('#btn-posting-box').text('포스팅박스 열기');
+            } else {
+                $('#post-box').show();
+                $('#btn-posting-box').text('포스팅박스 닫기');
+            }   
         }
     </script>
 </head>
@@ -61,14 +71,14 @@
             <p class="lead">중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다</p>
             <hr class="my-4">
             <p class="lead">
-                <a onclick="hey()" class="btn btn-primary btn-lg" href="#" role="button">포스팅박스 열기</a>
+                <a onclick="open_close()" id="btn-posting-box" class="btn btn-primary btn-lg" href="#" role="button">포스팅박스 열기</a>
             </p>
         </div>
 
-        <div class="article-post">
+        <div class="article-post" id="post-box">
             <div class="form-group">
-                <label for="exampleInputEmail1">아티클 URL</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label>아티클 URL</label>
+                <input type="email" class="form-control" id="article-url" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">간단 코멘트</label>
@@ -78,7 +88,7 @@
         </div>
 
 
-        <div class="card-columns">
+        <div class="card-columns" id="cards-box">
             <div class="card">
                 <img class="card-img-top"
                     src="https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8amFwYW4lMjBhZXN0aGV0aWN8ZW58MHx8MHx8fDA%3D"
